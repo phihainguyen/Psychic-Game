@@ -1,64 +1,72 @@
-var computerChoices = ["a", "b","c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
- // Creating variables to hold the number of wins, losses, and guesses left, and what has been guesses. They start at 0.
-var wins = 0;
-var losses = 0;
-var guessesLeft = 13;
-var guessed = [];
 
+//variables to needed for game to function
 
+ var wins = 0;
+ var losses = 0;
+ var remaining = 12;
+ var userGuess = [];
+ var bank = "abcdefghijklmnopqrstuvwxyz";
+ var randomPick = bank.charAt(Math.floor(Math.random() * 26))
 
+ // Create variables that hold references to the places in the HTML where we want to display things.
 
-
-   
-  
-
-    // Create variables that hold references to the places in the HTML where we want to display things.
     var directionsText = document.getElementById("directions-text");
     var userChoiceText = document.getElementById("userchoice-text");
     var computerChoiceText = document.getElementById("computerchoice-text");
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
-    var guessesLeftText = document.getElementById("guesses-left-text");
+    var remainingText = document.getElementById("remaining-text");
     var guessedText = document.getElementById("guessed");
 
-    // This function is run whenever the user presses a key.
-    document.onkeyup = function(one) {
+   
+    
 
-      // Determines which key was pressed.
-      var userGuess = one.key.toLowerCase();
+    function choose(letter){
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
-      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    if(randomPick===letter){
+      wins++;
+      remaining = 12;
+      userGuess = [];
+  pick = bank.charAt(Math.floor(Math.random()*26)) 
 
-      // Reworked our code from last step to use "else if" instead of lots of if statements.
 
-      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
-      for (var i = 0; i <= 12; i++) {
-      	0[i]
-      }
-      if (userGuess === computerChoices) {
-        } 
-      if (userGuess === computerGuess) {
-          wins++;
-        } else {
-          guessesLeft--;
-        }
-	if (guessesLeft === 0){
-	losses++;
 }
-        // Hide the directions
 
-        // Display the user and computer guesses, and wins/losses/ties.
-        userChoiceText.textContent = "You chose: " + userGuess;
+else{
+  remaining--;
+}
+if (remaining === 0){
+  losses++;
+  remaining = 12;
+  userGuess=[];
+}
+//add to the index for what letter user picks
+userGuess.push(letter)
 
-        computerChoiceText.textContent = "The computer chose: " + computerGuess;
+loop()
+}
 
-        winsText.textContent = "wins: " + wins;
+function loop(){
 
-        lossesText.textContent = "losses: " + losses;
+winsText.textContent = "Wins: " +wins
+lossesText.textContent = "Losses: " +losses
+remainingText.textContent = "You have " + remaining + " left."
+guessedText.textContent = "You've guessed " + userGuess  
+}
 
-        guessesLeftText.textContent = "guesses left " +guessesLeft;
-        guessedText.textContent = "Your guesses so far " + guessed.push(userGuess);
+loop()
 
-      }
-    ;
+function handleKeypress(event){
+
+    choose(event.key);}
+
+document.addEventListener("keypress", handleKeypress) 
+
+
+
+
+
+
+
+
+      
