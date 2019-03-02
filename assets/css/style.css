@@ -1,4 +1,4 @@
-.body {
+body {
     box-sizing: border-box;
     background-color:  rgba(244, 244, 244, 0.79);
     max-width: 960px;
@@ -106,8 +106,11 @@ h1{
         margin: auto;
     }
     .pic{
-        max-width: 600px;
+        max-width: 400px;
         margin: auto;
+    }
+    body{
+        width:400px;
     }
     
 }

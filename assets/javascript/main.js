@@ -27,7 +27,7 @@
       wins++;
       remaining = 12;
       userGuess = [];
-  pick = bank.charAt(Math.floor(Math.random()*26)) 
+      randomPick = bank.charAt(Math.floor(Math.random()*26)) 
 
 
 }
